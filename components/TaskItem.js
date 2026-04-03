@@ -1,0 +1,85 @@
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+export default function TaskItem({ task, onToggleComplete, onDeleteTask }) {
+  const getPriorityStyle = () => {
+    if (task.priority.toLowerCase() === 'high') return styles.high;
+    if (task.priority.toLowerCase() === 'low') return styles.low;
+    return styles.medium;
+  };
+
+  return (
+    <View style={[styles.card, getPriorityStyle()]}>
+      <Text style={[styles.title, task.completed && styles.completed]}>
+        {task.title}
+      </Text>
+      <Text>Priority: {task.priority}</Text>
+      <Text>Deadline: {task.deadline}</Text>
+      <Text>Status: {task.completed ? 'Complete' : 'In Progress'}</Text>
+
+      <View style={styles.buttonRow}>
+        <TouchableOpacity
+          style={styles.actionButton}
+          onPress={() => onToggleComplete(task.id)}
+        >
+          <Text style={styles.buttonText}>
+            {task.completed ? 'Undo' : 'Complete'}
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.actionButton, styles.deleteButton]}
+          onPress={() => onDeleteTask(task.id)}
+        >
+          <Text style={styles.buttonText}>Delete</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  card: {
+    padding: 14,
+    borderRadius: 10,
+    marginBottom: 12,
+    backgroundColor: '#fff',
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 4,
+  },
+  completed: {
+    textDecorationLine: 'line-through',
+    color: '#777',
+  },
+  high: {
+    borderLeftWidth: 6,
+    borderLeftColor: 'red',
+  },
+  medium: {
+    borderLeftWidth: 6,
+    borderLeftColor: 'orange',
+  },
+  low: {
+    borderLeftWidth: 6,
+    borderLeftColor: 'green',
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    marginTop: 10,
+  },
+  actionButton: {
+    backgroundColor: '#4a90e2',
+    padding: 8,
+    borderRadius: 6,
+    marginRight: 8,
+  },
+  deleteButton: {
+    backgroundColor: '#cc4444',
+  },
+  buttonText: {
+    color: '#fff',
+  },
+});
