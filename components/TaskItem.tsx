@@ -1,10 +1,29 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function TaskItem({ task, onToggleComplete, onDeleteTask }) {
+export type Task = {
+  id: number;
+  title: string;
+  priority: string;
+  deadline: string;
+  completed: boolean;
+};
+
+type TaskItemProps = {
+  task: Task;
+  onToggleComplete: (taskId: number) => void;
+  onDeleteTask: (taskId: number) => void;
+};
+
+export default function TaskItem({
+  task,
+  onToggleComplete,
+  onDeleteTask,
+}: TaskItemProps) {
   const getPriorityStyle = () => {
-    if (task.priority.toLowerCase() === 'high') return styles.high;
-    if (task.priority.toLowerCase() === 'low') return styles.low;
+    const p = task.priority.toLowerCase();
+    if (p === 'high') return styles.high;
+    if (p === 'low') return styles.low;
     return styles.medium;
   };
 
@@ -81,5 +100,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
+    fontWeight: 'bold',
   },
 });
