@@ -1,50 +1,35 @@
-# Welcome to your Expo app 👋
+# TimeBuddy
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+TimeBuddy is a time management app designed to help users stay organized and motivated through a simple and engaging interface. The goal of the app is to make task management less overwhelming and more interactive compared to traditional to-do lists.
 
-## Get started
+## Features
 
-1. Install dependencies
+- Create, complete, and delete tasks
+- Assign priority levels (high, medium, low)
+- Visual priority indicators using color coding
+- Persistent storage using AsyncStorage so tasks remain after restarting the app
+- Animated mascot that provides feedback when tasks are completed
 
-   ```bash
-   npm install
-   ```
+## Technologies Used
 
-2. Start the app
+- React Native
+- Expo
+- TypeScript
+- AsyncStorage
 
-   ```bash
-   npx expo start
-   ```
+## Current Functionality (Sprint 2)
 
-In the output, you'll find options to open the app in a
+The app includes a working task management system with persistent data storage and improved user interaction. Tasks can be added with priorities and deadlines, marked as complete, and deleted. The mascot animation appears when tasks are completed to provide feedback.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Future Improvements
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- Add more mascot animations
+- Implement a welcome animation when the app opens
+- Add a second page for expanded functionality
+- Apply a consistent color palette across the app
+- Improve UI/UX design and layout
+- Conduct user testing for feedback
 
-## Get a fresh project
+## Author
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Lucas Torres
