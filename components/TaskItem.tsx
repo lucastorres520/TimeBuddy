@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export type Task = {
   id: number;
@@ -22,8 +22,8 @@ export default function TaskItem({
 }: TaskItemProps) {
   const getPriorityStyle = () => {
     const p = task.priority.toLowerCase();
-    if (p === 'high') return styles.high;
-    if (p === 'low') return styles.low;
+    if (p === "high") return styles.high;
+    if (p === "low") return styles.low;
     return styles.medium;
   };
 
@@ -34,7 +34,7 @@ export default function TaskItem({
       </Text>
       <Text>Priority: {task.priority}</Text>
       <Text>Deadline: {task.deadline}</Text>
-      <Text>Status: {task.completed ? 'Complete' : 'In Progress'}</Text>
+      <Text>Status: {task.completed ? "Complete" : "In Progress"}</Text>
 
       <View style={styles.buttonRow}>
         <TouchableOpacity
@@ -42,7 +42,7 @@ export default function TaskItem({
           onPress={() => onToggleComplete(task.id)}
         >
           <Text style={styles.buttonText}>
-            {task.completed ? 'Undo' : 'Complete'}
+            {task.completed ? "Undo" : "Complete"}
           </Text>
         </TouchableOpacity>
 
@@ -62,44 +62,44 @@ const styles = StyleSheet.create({
     padding: 14,
     borderRadius: 10,
     marginBottom: 12,
-    backgroundColor: '#fff',
+    backgroundColor: "#CFC0BD",
   },
   title: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 4,
   },
   completed: {
-    textDecorationLine: 'line-through',
-    color: '#777',
+    textDecorationLine: "line-through",
+    color: "#777",
   },
   high: {
     borderLeftWidth: 6,
-    borderLeftColor: 'red',
+    borderLeftColor: "#f8caca",
   },
   medium: {
     borderLeftWidth: 6,
-    borderLeftColor: 'orange',
+    borderLeftColor: "#f8e0b8",
   },
   low: {
     borderLeftWidth: 6,
-    borderLeftColor: 'green',
+    borderLeftColor: "#cfeccf",
   },
   buttonRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 10,
   },
   actionButton: {
-    backgroundColor: '#4a90e2',
+    backgroundColor: "#4a90e2",
     padding: 8,
     borderRadius: 6,
     marginRight: 8,
   },
   deleteButton: {
-    backgroundColor: '#cc4444',
+    backgroundColor: "#cc4444",
   },
   buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
   },
 });

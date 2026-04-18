@@ -1,11 +1,19 @@
-import React from 'react';
+import React from "react";
 import {
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-} from 'react-native';
+} from "react-native";
+
+const COLORS = {
+  background: "#DDD5D0",
+  card: "#CFC0BD",
+  secondary: "#B8B8AA",
+  primary: "#7F9183",
+  dark: "#586F6B",
+};
 
 type AddTaskFormProps = {
   title: string;
@@ -15,6 +23,7 @@ type AddTaskFormProps = {
   onChangePriority: (value: string) => void;
   onChangeDeadline: (value: string) => void;
   onAddTask: () => void;
+  onOpenDatePicker: () => void;
 };
 
 export default function AddTaskForm({
@@ -25,6 +34,7 @@ export default function AddTaskForm({
   onChangePriority,
   onChangeDeadline,
   onAddTask,
+  onOpenDatePicker,
 }: AddTaskFormProps) {
   return (
     <View style={styles.formContainer}>
@@ -41,19 +51,19 @@ export default function AddTaskForm({
         <TouchableOpacity
           style={[
             styles.priorityButton,
-            priority === 'high' && styles.selectedHigh,
+            priority === "low" && styles.selectedLow,
           ]}
-          onPress={() => onChangePriority('high')}
+          onPress={() => onChangePriority("low")}
         >
-          <Text style={styles.priorityButtonText}>High</Text>
+          <Text style={styles.priorityButtonText}>Low</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[
             styles.priorityButton,
-            priority === 'medium' && styles.selectedMedium,
+            priority === "medium" && styles.selectedMedium,
           ]}
-          onPress={() => onChangePriority('medium')}
+          onPress={() => onChangePriority("medium")}
         >
           <Text style={styles.priorityButtonText}>Medium</Text>
         </TouchableOpacity>
@@ -61,21 +71,19 @@ export default function AddTaskForm({
         <TouchableOpacity
           style={[
             styles.priorityButton,
-            priority === 'low' && styles.selectedLow,
+            priority === "high" && styles.selectedHigh,
           ]}
-          onPress={() => onChangePriority('low')}
+          onPress={() => onChangePriority("high")}
         >
-          <Text style={styles.priorityButtonText}>Low</Text>
+          <Text style={styles.priorityButtonText}>High</Text>
         </TouchableOpacity>
       </View>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Deadline (YYYY-MM-DD)"
-        placeholderTextColor="#999"
-        value={deadline}
-        onChangeText={onChangeDeadline}
-      />
+      <TouchableOpacity style={styles.input} onPress={onOpenDatePicker}>
+        <Text style={{ color: deadline ? COLORS.dark : "#999" }}>
+          {deadline || "Select deadline"}
+        </Text>
+      </TouchableOpacity>
 
       <TouchableOpacity style={styles.button} onPress={onAddTask}>
         <Text style={styles.buttonText}>Add Task</Text>
@@ -90,52 +98,50 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: "600",
     marginBottom: 8,
-    color: '#333',
+    color: COLORS.dark,
   },
   input: {
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#ddd',
+    backgroundColor: COLORS.card,
     borderRadius: 8,
     padding: 10,
     marginBottom: 10,
   },
   priorityRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 12,
     gap: 8,
   },
   priorityButton: {
     flex: 1,
-    backgroundColor: '#eee',
+    backgroundColor: COLORS.secondary,
     paddingVertical: 10,
     borderRadius: 8,
-    alignItems: 'center',
+    alignItems: "center",
   },
   selectedHigh: {
-    backgroundColor: '#f8caca',
+    backgroundColor: "#f8caca",
   },
   selectedMedium: {
-    backgroundColor: '#f8e0b8',
+    backgroundColor: "#f8e0b8",
   },
   selectedLow: {
-    backgroundColor: '#cfeccf',
+    backgroundColor: "#cfeccf",
   },
   priorityButtonText: {
-    fontWeight: '600',
-    color: '#333',
+    fontWeight: "600",
+    color: COLORS.dark,
   },
   button: {
-    backgroundColor: '#4a90e2',
+    backgroundColor: COLORS.primary,
     padding: 12,
     borderRadius: 8,
-    alignItems: 'center',
+    alignItems: "center",
   },
   buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
   },
 });
